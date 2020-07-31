@@ -6,8 +6,8 @@
 期限・優先度クリックで並び替えが可能。
 
 ## 実装環境
--PHP 7.4  
--Laravel5.8  
+- PHP 7.4  
+- Laravel5.8  
 ・PostgresSQ L1.9  
 ・Heroku(デプロイ）  
 ・Bootstrap4（フロント側実装）  
