@@ -29,6 +29,11 @@
                                 <button type="submit" class="btn btn-primary">ログイン</button>
                             </div>
                         </form>
+                        <div class="form-group">
+                            <label>下記でログインできます（テスト用）</label><br>
+                            <label>アドレス:test@user.com</label><br>
+                            <label>パスワード:123123</label>
+                        </div>
                     </div>
                 </div>
             </div>
