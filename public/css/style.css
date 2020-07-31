@@ -1,0 +1,63 @@
+@import url("https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css");
+
+body{
+	background-color: white;
+}
+
+.table td,
+.table th {
+    padding: 0.5rem;
+}
+
+.navbar {
+	margin-bottom: 2rem;
+	padding: 1.5em;
+}
+
+.btn{
+    background-color: #b6fff8d1!important;
+    margin: 1.5em 0 2.5em 0;
+    border:1px solid #8c8c8c;
+    color:black;
+}
+
+.btn-home{
+    margin: 0;
+}
+.panel-heading{
+    background-color: #b6fff8d1!important;
+    margin: 1.5em 0 2.5em 0;
+    padding: 0.75em;
+    border-radius: 5px;
+}
+
+.bg-dark{
+    background-color: #b6fff8d1!important;
+}
+
+.navbar-dark .navbar-brand{
+    color: #8c8c8c;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: #8c8c8c;
+}
+
+.card-header{
+	background-color: #b6fff8d1;
+}
+.card-body{
+	padding: 0;
+}
+
+.pass-change{
+    padding: 1em;
+}
+
+.text-right a{
+    background-color: #b6fff8d1;
+}
+
+.text-right a:hover{
+	color: #ffffff;
+}
