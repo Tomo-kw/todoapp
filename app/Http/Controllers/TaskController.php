@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Service\TaskService;
 use App\Task;
 // クラスのインポート
 use Illuminate\Http\Request;
@@ -13,6 +14,14 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskController extends Controller
 {
+    /** @var TaskService */
+    private $taskService;
+
+    public function __construct(TaskService $taskService)
+    {
+        $this->taskService = $taskService;
+    }
+
     /**
      * タスク一覧の表示及びソート
      * @param Request $request
@@ -22,45 +31,15 @@ class TaskController extends Controller
     {
         $sort = $request->sort;
 
-        if(is_null($sort)){
-            // 全てのタスクを取得し昇順に並び替え
-            $tasks = Auth::user()->tasks()->orderBy('id', 'asc')
-                ->get();
-            return view('tasks/index', [
-                'tasks' => $tasks,
-                'sort' => "asc",
-                'status' => "status",
-                'due_date' => "due_date",
-            ]);           
-        }
-
         // 期限・優先度どちらをクリックしたかのチェック
-        if(is_null($request->status)){
+        if (is_null($request->status)) {
             $range = $request->due_date;
-        }else{
+        } else {
             $range = $request->status;
         }
-        
-        // データを取得しソート
-        if($sort == 'asc'){
-            $tasks = Auth::user()->tasks()->orderBy($range, 'asc')
-            ->get();
-            return view('tasks/index', [
-                'tasks' => $tasks,
-                'sort' => "desc",
-                'status' => "status",
-                'due_date' => "due_date",
-            ]);
-        }elseif($sort = 'desc'){
-            $tasks = Auth::user()->tasks()->orderBy($range, 'desc')
-            ->get();
-            return view('tasks/index', [
-                'tasks' => $tasks,
-                'sort' => "asc",
-                'status' => "status",
-                'due_date' => "due_date",
-            ]);
-        }
+
+        $result = $this->taskService->sort($range, $sort);
+        return view('tasks/index', $result);
     }
 
     /**
@@ -99,7 +78,7 @@ class TaskController extends Controller
     public function showEdit(int $id)
     {
         $task = TASK::find($id);
-        
+
         return view('tasks/edit', [
             'task' => $task,
         ]);
